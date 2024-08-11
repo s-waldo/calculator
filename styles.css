@@ -39,14 +39,12 @@ body {
 #display {
   height: 75px;
   width: 100%;
-  input {
-    height: 100%;
-    width: 100%;
-    text-align: end;
-    font-size: 3rem;
-    padding: 5px;
-    font-family: 'Courier New', Courier, monospace;
-  }
+  background-color: var(--modifier-btn);
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  font-size: 3.5rem;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .button-grid {
