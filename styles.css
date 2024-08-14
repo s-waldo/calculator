@@ -83,3 +83,7 @@ button#zero {
 .function {
   background-color: var(--function-btn);
 }
+
+#pressed {
+  background-color: #c4c4c4;
+}

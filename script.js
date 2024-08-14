@@ -15,12 +15,28 @@ const reset = () => {
 
 const doCalculation = (sign) => {
   const calculation = eval(valueOfFirstInput + sign + valueOfSecondInput);
+  calculationPerformed = true
+  resetBtnClass()
   if (calculation > 99999999) {
-    return "Error"
+    return "Error";
   } else {
-    return Math.round(calculation * 100000) / 100000
+    return Math.round(calculation * 100000) / 100000;
   }
 };
+
+const resetDisplay = () => {
+  if (calculationPerformed) {
+    display.innerText = "0"
+    calculationPerformed = false
+  }
+}
+
+const resetBtnClass = () => {
+  const pressed = document.getElementById('pressed')
+  if (pressed) {
+    pressed.removeAttribute("id")
+  }
+}
 
 const setSign = (action) => {
   if (action === "add") {
@@ -42,10 +58,7 @@ keys.forEach((key) => {
       if (display.innerText.length >= 8) {
         return;
       }
-      if (calculationPerformed) {
-        newNumber = true;
-        !calculationPerformed;
-      }
+      resetDisplay();
       if (display.innerText === "0" || newNumber) {
         display.innerText = e.target.innerText;
         newNumber = false;
@@ -60,6 +73,8 @@ keys.forEach((key) => {
       action === "divide" ||
       action === "multiply"
     ) {
+      resetBtnClass()
+      e.target.setAttribute("id", "pressed")
       valueOfFirstInput = parseFloat(display.innerText);
       setSign(action);
       newNumber = true;
